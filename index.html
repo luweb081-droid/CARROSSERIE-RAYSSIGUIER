@@ -1,124 +1,2722 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrosserie Rayssiguier Five Star — Albi</title>
-<meta name="description" content="Atelier de carrosserie automobile à Albi. Réparation, peinture et restauration de jantes poly diamanté. Note 4,9/5 sur 97 avis.">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carrosserie Rayssiguier Five Star — Albi</title>
+
+  <meta
+    name="description"
+    content="Carrosserie Rayssiguier Five Star à Albi. Réparation automobile, peinture, carrosserie et restauration de jantes."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --green: #69c58b;
+      --green-dark: #4caf73;
+      --green-light: #eaf8ef;
+
+      --black: #101312;
+      --dark: #171b19;
+
+      --white: #ffffff;
+      --background: #ffffff;
+      --grey: #737a76;
+      --grey-light: #f5f7f6;
+
+      --border: #e5e9e6;
+
+      --radius: 18px;
+      --radius-lg: 28px;
+
+      --shadow: 0 15px 45px rgba(20, 30, 24, .09);
+
+      --container: 1280px;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--background);
+      color: var(--black);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 80px));
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       TOP BAR
+    ========================================================= */
+
+    .top-bar {
+      height: 53px;
+      background: #f4f7fa;
+      color: #151918;
+      position: relative;
+      z-index: 100;
+    }
+
+    .top-bar-inner {
+      width: min(var(--container), calc(100% - 80px));
+      height: 100%;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .top-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .top-icon {
+      width: 17px;
+      height: 17px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--green);
+      font-size: 15px;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .site-header {
+      position: absolute;
+      top: 53px;
+      left: 0;
+
+      width: 100%;
+      height: 100px;
+
+      z-index: 50;
+
+      color: white;
+    }
+
+    .header-inner {
+      width: min(var(--container), calc(100% - 80px));
+      height: 100%;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+      width: 220px;
+      display: block;
+    }
+
+    .logo-main {
+      font-family: 'Manrope', sans-serif;
+      font-size: 32px;
+      line-height: .8;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .logo-sub {
+      margin-top: 8px;
+
+      color: var(--green);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+
+    /* NAVIGATION */
+
+    .primary-nav {
+      margin-left: auto;
+    }
+
+    .primary-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 43px;
+
+      list-style: none;
+    }
+
+    .primary-nav a {
+      position: relative;
+
+      color: rgba(255,255,255,.9);
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: .25s ease;
+    }
+
+    .primary-nav a:hover,
+    .primary-nav a.active {
+      color: var(--green);
+    }
+
+    .primary-nav a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+
+      width: 0;
+      height: 2px;
+
+      background: var(--green);
+
+      transition: .25s ease;
+    }
+
+    .primary-nav a:hover::after,
+    .primary-nav a.active::after {
+      width: 100%;
+    }
+
+
+    /* HEADER BUTTON */
+
+    .header-phone {
+      margin-left: 45px;
+
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 12px 21px;
+
+      border-radius: 999px;
+
+      background: var(--green);
+      color: white;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow: 0 8px 25px rgba(105,197,139,.25);
+
+      transition: .25s ease;
+    }
+
+    .header-phone:hover {
+      background: white;
+      color: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+
+    /* MOBILE BUTTON */
+
+    .nav-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 0;
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.12);
+
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 5px;
+
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 19px;
+      height: 2px;
+
+      background: white;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      height: 680px;
+
+      overflow: hidden;
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      object-position: center;
+    }
+
+    /* voile comme sur la capture */
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10,15,13,.70) 0%,
+          rgba(10,15,13,.46) 42%,
+          rgba(10,15,13,.16) 75%,
+          rgba(10,15,13,.22) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.30),
+          transparent 35%,
+          rgba(0,0,0,.18)
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+
+      width: min(var(--container), calc(100% - 80px));
+      margin: auto;
+
+      padding-top: 75px;
+    }
+
+    .hero-kicker {
+      display: block;
+
+      margin-bottom: 18px;
+
+      font-size: 15px;
+      font-weight: 500;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      color: white;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(3rem, 5vw, 4.6rem);
+
+      font-weight: 800;
+
+      line-height: 1.08;
+
+      letter-spacing: -2.5px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin-top: 23px;
+
+      color: rgba(255,255,255,.9);
+
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+
+    /* HERO BUTTONS */
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+
+      gap: 16px;
+
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 56px;
+
+      padding: 0 31px;
+
+      border-radius: 999px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+
+      box-shadow: 0 12px 30px rgba(105,197,139,.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--green-dark);
+
+      border: 2px solid white;
+    }
+
+    .btn-white:hover {
+      background: transparent;
+      color: white;
+    }
+
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+
+    .services-section {
+      padding: 52px 0 90px;
+
+      background: white;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 35px;
+      font-weight: 800;
+
+      letter-spacing: -1.3px;
+    }
+
+    .section-title span {
+      color: var(--green);
+    }
+
+
+    /* SERVICES GRID */
+
+    .services-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 28px;
+    }
+
+    .service-card {
+      position: relative;
+
+      height: 390px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background: #eee;
+
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+
+      transition: .35s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+
+      box-shadow: 0 20px 45px rgba(0,0,0,.13);
+    }
+
+    .service-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform .6s ease;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.06);
+    }
+
+    .service-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.02) 20%,
+          rgba(0,0,0,.12) 42%,
+          rgba(0,0,0,.82) 100%
+        );
+    }
+
+    .service-content {
+      position: absolute;
+
+      left: 28px;
+      right: 28px;
+      bottom: 27px;
+
+      color: white;
+    }
+
+    .service-number {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 34px;
+      height: 34px;
+
+      margin-bottom: 13px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .service-special {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: var(--green);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .service-content h3 {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 27px;
+      line-height: 1.08;
+
+      font-weight: 800;
+
+      letter-spacing: -.7px;
+    }
+
+    .service-content p {
+      max-width: 400px;
+
+      margin-top: 12px;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .service-arrow {
+      position: absolute;
+
+      right: 0;
+      bottom: 0;
+
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: white;
+
+      color: var(--green-dark);
+
+      font-size: 19px;
+
+      transition: .25s ease;
+    }
+
+    .service-card:hover .service-arrow {
+      background: var(--green);
+      color: white;
+      transform: rotate(-45deg);
+    }
+
+
+    /* =========================================================
+       PRESENTATION
+    ========================================================= */
+
+    .about-section {
+      padding: 105px 0;
+
+      background: var(--grey-light);
+    }
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .about-image {
+      height: 540px;
+
+      overflow: hidden;
+
+      border-radius: 28px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .section-kicker {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 17px;
+
+      color: var(--green-dark);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+
+      width: 28px;
+      height: 2px;
+
+      background: var(--green);
+    }
+
+    .about-content h2 {
+      max-width: 600px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(2.5rem, 4vw, 4rem);
+
+      font-weight: 800;
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+    }
+
+    .about-content h2 span {
+      color: #858c88;
+    }
+
+    .about-content > p {
+      max-width: 570px;
+
+      margin-top: 25px;
+
+      color: var(--grey);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+    .about-points {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      margin-top: 35px;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-point {
+      padding: 21px 15px;
+
+      border-right: 1px solid var(--border);
+    }
+
+    .about-point:last-child {
+      border-right: 0;
+    }
+
+    .about-point strong {
+      display: block;
+
+      color: var(--green-dark);
+
+      font-size: 12px;
+
+      margin-bottom: 4px;
+    }
+
+    .about-point span {
+      font-size: 11px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       SPECIALITE JANTES
+    ========================================================= */
+
+    .speciality-section {
+      padding: 100px 0;
+
+      background: white;
+    }
+
+    .speciality-grid {
+      display: grid;
+
+      grid-template-columns: .9fr 1.1fr;
+
+      gap: 75px;
+
+      align-items: center;
+    }
+
+    .speciality-image {
+      height: 570px;
+
+      overflow: hidden;
+
+      border-radius: 28px;
+    }
+
+    .speciality-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .speciality-content h2 {
+      max-width: 600px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(2.7rem, 4vw, 4.2rem);
+
+      font-weight: 800;
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+    }
+
+    .speciality-content h2 span {
+      color: #858c88;
+    }
+
+    .speciality-content > p {
+      max-width: 580px;
+
+      margin-top: 24px;
+
+      color: var(--grey);
+
+      line-height: 1.8;
+    }
+
+    .process-list {
+      display: flex;
+
+      margin-top: 35px;
+
+      max-width: 580px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      overflow: hidden;
+    }
+
+    .process-item {
+      flex: 1;
+
+      padding: 18px;
+
+      border-right: 1px solid var(--border);
+    }
+
+    .process-item:last-child {
+      border-right: 0;
+    }
+
+    .process-item strong {
+      display: block;
+
+      color: var(--green-dark);
+
+      font-size: 10px;
+
+      margin-bottom: 5px;
+    }
+
+    .process-item span {
+      font-size: 11px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       REALISATIONS
+    ========================================================= */
+
+    .projects-section {
+      padding: 100px 0;
+
+      background: var(--grey-light);
+    }
+
+    .projects-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-bottom: 38px;
+    }
+
+    .projects-header h2 {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(2.5rem, 4vw, 4rem);
+
+      font-weight: 800;
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+    }
+
+    .projects-header h2 span {
+      color: #858c88;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 10px;
+
+      color: var(--green-dark);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+
+      transition: .25s ease;
+    }
+
+    .text-link span {
+      font-size: 18px;
+
+      transition: .25s ease;
+    }
+
+    .text-link:hover span {
+      transform: translateX(5px);
+    }
+
+    .projects-grid {
+      display: grid;
+
+      grid-template-columns: 1.5fr 1fr 1fr;
+
+      height: 470px;
+
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 22px;
+    }
+
+    .project img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: .6s ease;
+    }
+
+    .project:hover img {
+      transform: scale(1.06);
+    }
+
+    .project::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(
+        180deg,
+        transparent 45%,
+        rgba(0,0,0,.8)
+      );
+    }
+
+    .project-info {
+      position: absolute;
+
+      left: 25px;
+      right: 25px;
+      bottom: 23px;
+
+      z-index: 2;
+
+      color: white;
+    }
+
+    .project-info span {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: var(--green);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .12em;
+    }
+
+    .project-info strong {
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+
+    /* =========================================================
+       AVIS
+    ========================================================= */
+
+    .reviews-section {
+      padding: 100px 0;
+
+      background: white;
+    }
+
+    .reviews-grid {
+      display: grid;
+
+      grid-template-columns: 310px 1fr;
+
+      gap: 90px;
+
+      align-items: center;
+    }
+
+    .reviews-score {
+      padding: 35px;
+
+      border-radius: 24px;
+
+      background: var(--grey-light);
+
+      text-align: center;
+    }
+
+    .reviews-score strong {
+      display: block;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 70px;
+      line-height: 1;
+
+      font-weight: 800;
+    }
+
+    .review-stars {
+      margin-top: 12px;
+
+      color: var(--green);
+
+      font-size: 19px;
+
+      letter-spacing: 3px;
+    }
+
+    .reviews-score span {
+      display: block;
+
+      margin-top: 8px;
+
+      color: var(--grey);
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .review-main blockquote {
+      max-width: 850px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+
+      font-weight: 800;
+
+      line-height: 1.08;
+
+      letter-spacing: -1.5px;
+    }
+
+    .review-author {
+      margin-top: 20px;
+
+      color: var(--grey);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: .1em;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .contact-section {
+      padding: 0 0 30px;
+
+      background: white;
+    }
+
+    .contact-cta {
+      position: relative;
+
+      min-height: 500px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      border-radius: 28px;
+
+      color: white;
+    }
+
+    .cta-background {
+      position: absolute;
+      inset: 0;
+    }
+
+    .cta-background img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(9,15,12,.88),
+          rgba(9,15,12,.55)
+        );
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+
+      padding: 65px;
+    }
+
+    .cta-content h2 {
+      max-width: 700px;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: clamp(2.8rem, 5vw, 5rem);
+
+      font-weight: 800;
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+    }
+
+    .cta-content h2 span {
+      color: var(--green);
+    }
+
+    .cta-content p {
+      max-width: 520px;
+
+      margin-top: 20px;
+
+      color: rgba(255,255,255,.8);
+
+      font-size: 15px;
+    }
+
+    .cta-buttons {
+      display: flex;
+
+      gap: 13px;
+
+      margin-top: 30px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 65px 0 25px;
+
+      background: #111513;
+
+      color: #8d9691;
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .footer-logo {
+      color: white;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-size: 27px;
+      font-weight: 800;
+
+      letter-spacing: -1.5px;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+
+      margin-top: 20px;
+
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 17px;
+
+      color: white;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .footer-column a {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 12px;
+
+      transition: .2s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--green);
+    }
+
+    .footer-column p {
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 55px;
+      padding-top: 20px;
+
+      border-top: 1px solid #29302c;
+
+      color: #626b66;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+
+      .primary-nav ul {
+        gap: 23px;
+      }
+
+      .header-phone {
+        margin-left: 25px;
+      }
+
+      .services-grid {
+        gap: 16px;
+      }
+
+      .about-grid,
+      .speciality-grid {
+        gap: 45px;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .container,
+      .top-bar-inner,
+      .header-inner,
+      .hero-content {
+        width: min(100% - 44px, var(--container));
+      }
+
+
+      /* TOP BAR */
+
+      .top-bar {
+        height: 45px;
+      }
+
+      .top-bar-inner {
+        font-size: 10px;
+      }
+
+      .top-right {
+        gap: 0;
+      }
+
+      .top-right .top-item:first-child {
+        display: none;
+      }
+
+
+      /* HEADER */
+
+      .site-header {
+        top: 45px;
+        height: 78px;
+      }
+
+      .logo {
+        width: auto;
+      }
+
+      .logo-main {
+        font-size: 25px;
+      }
+
+      .logo-sub {
+        font-size: 8px;
+      }
+
+      .primary-nav {
+        position: fixed;
+
+        top: 123px;
+        left: 0;
+
+        width: 100%;
+        height: calc(100vh - 123px);
+
+        padding: 25px 22px;
+
+        background: #111513;
+
+        transform: translateX(100%);
+
+        transition: .3s ease;
+      }
+
+      .primary-nav.open {
+        transform: translateX(0);
+      }
+
+      .primary-nav ul {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+      }
+
+      .primary-nav li {
+        width: 100%;
+      }
+
+      .primary-nav a {
+        display: block;
+
+        width: 100%;
+
+        padding: 17px 0;
+
+        border-bottom: 1px solid #29302c;
+
+        font-size: 15px;
+      }
+
+      .header-phone {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+
+        margin-left: auto;
+      }
+
+
+      /* HERO */
+
+      .hero {
+        height: 690px;
+      }
+
+      .hero-content {
+        padding-top: 90px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 11vw, 4rem);
+
+        letter-spacing: -1.8px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: 330px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+
+      /* SERVICES */
+
+      .services-section {
+        padding: 65px 0;
+      }
+
+      .section-title {
+        font-size: 29px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        height: 410px;
+      }
+
+
+      /* ABOUT */
+
+      .about-section {
+        padding: 70px 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        height: 420px;
+      }
+
+      .about-content h2 {
+        font-size: 2.7rem;
+      }
+
+
+      /* SPECIALITY */
+
+      .speciality-section {
+        padding: 70px 0;
+      }
+
+      .speciality-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .speciality-image {
+        height: 420px;
+      }
+
+      .speciality-content h2 {
+        font-size: 2.8rem;
+      }
+
+
+      /* PROJECTS */
+
+      .projects-section {
+        padding: 70px 0;
+      }
+
+      .projects-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+
+        height: auto;
+      }
+
+      .project {
+        height: 320px;
+      }
+
+
+      /* REVIEWS */
+
+      .reviews-section {
+        padding: 70px 0;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+
+      .reviews-score {
+        max-width: 310px;
+      }
+
+
+      /* CTA */
+
+      .contact-section {
+        padding: 0 0 15px;
+      }
+
+      .contact-cta {
+        min-height: 540px;
+
+        border-radius: 22px;
+      }
+
+      .cta-content {
+        padding: 35px;
+      }
+
+      .cta-content h2 {
+        font-size: 2.9rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: 300px;
+      }
+
+
+      /* FOOTER */
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 40px 25px;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      .top-bar-inner {
+        justify-content: center;
+      }
+
+      .top-bar .top-item {
+        font-size: 9px;
+      }
+
+      .hero {
+        height: 680px;
+      }
+
+      .hero h1 {
+        font-size: 2.65rem;
+      }
+
+      .hero-kicker {
+        font-size: 12px;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .about-point {
+        border-right: 0;
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-point:last-child {
+        border-bottom: 0;
+      }
+
+      .process-list {
+        flex-direction: column;
+      }
+
+      .process-item {
+        border-right: 0;
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      .process-item:last-child {
+        border-bottom: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+
+        gap: 8px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <a href="index.html" class="brand">Rayssiguier <span>Carrosserie Five Star — Albi</span></a>
-    <nav class="primary-nav">
-      <ul>
-        <li><a href="index.html" class="active">Accueil</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="realisations.html">Réalisations</a></li>
-        <li><a href="avis.html">Avis</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="tel:0563479603" class="call-btn">05 63 47 96 03</a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="hero-stripes"></div>
-  <div class="wrap">
-    <div>
-      <div class="eyebrow-line"><span class="rule"></span><span>Atelier de carrosserie automobile — Albi</span></div>
-      <h1>Votre carrosserie<br><em>comme neuve.</em></h1>
-      <p class="hero-sub">Chocs, rayures, jantes ternies : l'atelier Rayssiguier remet votre véhicule à neuf, avec le savoir-faire d'un artisan et le fini d'un carrossier haut de gamme.</p>
-      <div class="hero-cta">
-        <a href="contact.html" class="btn btn-primary">Demander un devis</a>
-        <a href="realisations.html" class="btn btn-ghost">Voir les réalisations</a>
+  <!-- =====================================================
+       TOP BAR
+  ====================================================== -->
+
+  <div class="top-bar">
+
+    <div class="top-bar-inner">
+
+      <div class="top-item">
+
+        <span class="top-icon">◷</span>
+
+        <span>
+          Lundi au vendredi : 08h00 – 12h00 / 14h00 – 18h00
+        </span>
+
       </div>
-    </div>
-    <div class="rating-card">
-      <div class="rating-num">4,9</div>
-      <div class="stars">★★★★★</div>
-      <p>97 avis Google · 5/5 Pages Jaunes</p>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ce que fait l'atelier</h2>
-      <span class="index">01 — 03</span>
-    </div>
-    <div class="grid-3">
-      <div class="service-cell">
-        <span class="service-num">01</span>
-        <h3>Carrosserie &amp; peinture</h3>
-        <p>Débosselage, remplacement d'éléments, mise en peinture cabine : chaque réparation est traitée comme une remise à neuf, pas un rafistolage.</p>
+
+      <div class="top-right">
+
+        <div class="top-item">
+
+          <span class="top-icon">✓</span>
+
+          <span>
+            Carrosserie & réparation automobile
+          </span>
+
+        </div>
+
       </div>
-      <div class="service-cell">
-        <span class="service-num">02</span>
-        <h3>Jantes poly diamanté</h3>
-        <p>La spécialité de l'atelier : restauration de jantes poly diamanté, pour retrouver un éclat miroir sans changer les roues.</p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+
+      <a href="index.html" class="logo">
+
+        <div class="logo-main">
+          RAYSSIGUIER
+        </div>
+
+        <div class="logo-sub">
+          Carrosserie Five Star · Albi
+        </div>
+
+      </a>
+
+
+      <nav class="primary-nav">
+
+        <ul>
+
+          <li>
+            <a href="index.html" class="active">
+              Accueil
+            </a>
+          </li>
+
+          <li>
+            <a href="services.html">
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a href="realisations.html">
+              Réalisations
+            </a>
+          </li>
+
+          <li>
+            <a href="avis.html">
+              Avis
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+      <a href="tel:0563479603" class="header-phone">
+
+        <span>☎</span>
+
+        <span>
+          05 63 47 96 03
+        </span>
+
+      </a>
+
+
+      <button
+        class="nav-toggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="hero">
+
+
+    <div class="hero-background">
+
+      <img
+        src="images/atelier.jpg"
+        alt="Atelier de carrosserie Rayssiguier à Albi"
+      >
+
+    </div>
+
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+      <span class="hero-kicker">
+        Carrosserie Rayssiguier Five Star
+      </span>
+
+
+      <h1>
+
+        Votre véhicule,
+        <br>
+
+        <span>notre savoir-faire.</span>
+
+      </h1>
+
+
+      <p class="hero-description">
+
+        Carrosserie, peinture automobile et restauration de jantes
+        à Albi. Nous redonnons à votre véhicule son aspect d'origine
+        avec précision et exigence.
+
+      </p>
+
+
+      <div class="hero-buttons">
+
+        <a
+          href="contact.html"
+          class="btn btn-primary"
+        >
+          Demander un devis
+        </a>
+
+
+        <a
+          href="realisations.html"
+          class="btn btn-white"
+        >
+          Voir nos réalisations
+        </a>
+
       </div>
-      <div class="service-cell">
-        <span class="service-num">03</span>
-        <h3>Devis &amp; expertise</h3>
-        <p>Diagnostic sur place, devis clair avant intervention, prise en charge des dossiers d'assurance.</p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SERVICES
+  ====================================================== -->
+
+  <section class="services-section">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Découvrez <span>nos services</span>
+      </h2>
+
+
+      <div class="services-grid">
+
+
+        <!-- SERVICE 01 -->
+
+        <a
+          href="services.html"
+          class="service-card"
+        >
+
+          <div class="service-image">
+
+            <img
+              src="images/atelier.jpg"
+              alt="Carrosserie et peinture automobile"
+            >
+
+          </div>
+
+          <div class="service-overlay"></div>
+
+
+          <div class="service-content">
+
+            <span class="service-number">
+              01
+            </span>
+
+            <h3>
+              Carrosserie
+              <br>
+              & peinture
+            </h3>
+
+            <p>
+              Réparation des chocs, rayures et éléments
+              de carrosserie avec une finition soignée.
+            </p>
+
+            <span class="service-arrow">
+              →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- SERVICE 02 -->
+
+        <a
+          href="services.html"
+          class="service-card"
+        >
+
+          <div class="service-image">
+
+            <img
+              src="images/jante.jpg"
+              alt="Restauration de jantes poly diamanté"
+            >
+
+          </div>
+
+          <div class="service-overlay"></div>
+
+
+          <div class="service-content">
+
+            <span class="service-number">
+              02
+            </span>
+
+            <span class="service-special">
+              Spécialité
+            </span>
+
+            <h3>
+              Jantes
+              <br>
+              poly diamanté
+            </h3>
+
+            <p>
+              Restauration de jantes rayées, ternies ou
+              abîmées pour retrouver leur finition d'origine.
+            </p>
+
+            <span class="service-arrow">
+              →
+            </span>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- SERVICE 03 -->
+
+        <a
+          href="services.html"
+          class="service-card"
+        >
+
+          <div class="service-image">
+
+            <img
+              src="images/atelier.jpg"
+              alt="Expertise automobile et devis"
+            >
+
+          </div>
+
+          <div class="service-overlay"></div>
+
+
+          <div class="service-content">
+
+            <span class="service-number">
+              03
+            </span>
+
+            <h3>
+              Devis
+              <br>
+              & expertise
+            </h3>
+
+            <p>
+              Diagnostic du véhicule, devis transparent et
+              accompagnement dans vos démarches d'assurance.
+            </p>
+
+            <span class="service-arrow">
+              →
+            </span>
+
+          </div>
+
+        </a>
+
+
       </div>
-    </div>
-    <p style="margin-top:28px;"><a href="services.html" class="btn btn-primary">Tous les services</a></p>
-  </div>
-</section>
 
-<section class="strip-dark">
-  <div class="wrap grid-2" style="gap:48px; align-items:center;">
-    <div>
-      <img src="images/jante.jpg" alt="Jante poly diamanté restaurée par l'atelier Rayssiguier" style="border:1px solid #3a3c40;">
-      <p class="placeholder-note">Photo issue de la fiche Google de l'atelier — à remplacer par vos propres visuels.</p>
     </div>
-    <div>
-      <div class="eyebrow-line"><span class="rule" style="background:#54585f;"></span><span>Spécialité maison</span></div>
-      <h2>La restauration de jantes, un métier à part entière</h2>
-      <p>Poly diamanté ternie, rayée ou piquée : l'atelier remet vos jantes en état sans les remplacer, pour un rendu identique à l'origine — à une fraction du prix d'une jante neuve.</p>
-      <a href="services.html" class="btn btn-ghost" style="margin-top:10px;">En savoir plus</a>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ils en parlent mieux que nous</h2>
-      <span class="index">4,9 / 5</span>
-    </div>
-    <blockquote class="quote-block">
-      <p>« Un travail impeccable et un accueil très professionnel. »</p>
-    </blockquote>
-    <p style="margin-top:26px;"><a href="avis.html" class="btn btn-primary">Lire tous les avis</a></p>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <h4>Carrosserie Rayssiguier Five Star</h4>
-      <p>8 Chemin de Ranteil<br>81000 Albi</p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <p><a href="tel:0563479603">05 63 47 96 03</a></p>
-    </div>
-    <div>
-      <h4>Horaires</h4>
-      <p>Lun – Ven · 08:00 – 18:00</p>
-    </div>
-  </div>
-  <div class="wrap foot-bottom">© Carrosserie Rayssiguier Five Star — Tous droits réservés.</div>
-</footer>
 
-<script src="script.js"></script>
+
+  <!-- =====================================================
+       PRESENTATION
+  ====================================================== -->
+
+  <section class="about-section">
+
+    <div class="container">
+
+      <div class="about-grid">
+
+
+        <div class="about-image">
+
+          <img
+            src="images/atelier.jpg"
+            alt="Atelier Rayssiguier Five Star à Albi"
+          >
+
+        </div>
+
+
+        <div class="about-content">
+
+          <div class="section-kicker">
+            Notre atelier
+          </div>
+
+
+          <h2>
+
+            L'exigence du
+            <br>
+
+            <span>travail bien fait.</span>
+
+          </h2>
+
+
+          <p>
+
+            Chaque véhicule mérite une attention particulière.
+            Chez Rayssiguier, nous associons savoir-faire,
+            précision et qualité de finition pour redonner
+            à votre véhicule son aspect d'origine.
+
+          </p>
+
+
+          <div class="about-points">
+
+            <div class="about-point">
+
+              <strong>
+                01
+              </strong>
+
+              <span>
+                Expertise
+              </span>
+
+            </div>
+
+
+            <div class="about-point">
+
+              <strong>
+                02
+              </strong>
+
+              <span>
+                Précision
+              </span>
+
+            </div>
+
+
+            <div class="about-point">
+
+              <strong>
+                03
+              </strong>
+
+              <span>
+                Finition
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <br>
+
+
+          <a
+            href="services.html"
+            class="text-link"
+          >
+
+            Découvrir notre savoir-faire
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       SPECIALITE JANTES
+  ====================================================== -->
+
+  <section class="speciality-section">
+
+    <div class="container">
+
+      <div class="speciality-grid">
+
+
+        <div class="speciality-image">
+
+          <img
+            src="images/jante.jpg"
+            alt="Restauration de jante poly diamanté"
+          >
+
+        </div>
+
+
+        <div class="speciality-content">
+
+          <div class="section-kicker">
+            Spécialité maison
+          </div>
+
+
+          <h2>
+
+            La jante
+            <br>
+
+            <span>retrouve son éclat.</span>
+
+          </h2>
+
+
+          <p>
+
+            Rayée, ternie ou abîmée, une jante n'est pas
+            forcément bonne à remplacer. Notre savoir-faire
+            en restauration poly diamanté permet de lui
+            redonner son aspect d'origine.
+
+          </p>
+
+
+          <div class="process-list">
+
+
+            <div class="process-item">
+
+              <strong>
+                01
+              </strong>
+
+              <span>
+                Diagnostic
+              </span>
+
+            </div>
+
+
+            <div class="process-item">
+
+              <strong>
+                02
+              </strong>
+
+              <span>
+                Restauration
+              </span>
+
+            </div>
+
+
+            <div class="process-item">
+
+              <strong>
+                03
+              </strong>
+
+              <span>
+                Finition
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+          <br>
+
+
+          <a
+            href="services.html"
+            class="btn btn-primary"
+          >
+            En savoir plus
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       REALISATIONS
+  ====================================================== -->
+
+  <section class="projects-section">
+
+    <div class="container">
+
+
+      <div class="projects-header">
+
+        <div>
+
+          <div class="section-kicker">
+            Nos réalisations
+          </div>
+
+          <h2>
+
+            Le résultat
+            <br>
+
+            <span>parle de lui-même.</span>
+
+          </h2>
+
+        </div>
+
+
+        <a
+          href="realisations.html"
+          class="text-link"
+        >
+
+          Toutes les réalisations
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+      </div>
+
+
+
+      <div class="projects-grid">
+
+
+        <a
+          href="realisations.html"
+          class="project"
+        >
+
+          <img
+            src="images/atelier.jpg"
+            alt="Réalisation carrosserie"
+          >
+
+          <div class="project-info">
+
+            <span>
+              CARROSSERIE
+            </span>
+
+            <strong>
+              Réparation & peinture
+            </strong>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="realisations.html"
+          class="project"
+        >
+
+          <img
+            src="images/jante.jpg"
+            alt="Restauration de jante"
+          >
+
+          <div class="project-info">
+
+            <span>
+              JANTES
+            </span>
+
+            <strong>
+              Poly diamanté
+            </strong>
+
+          </div>
+
+        </a>
+
+
+        <a
+          href="realisations.html"
+          class="project"
+        >
+
+          <img
+            src="images/atelier.jpg"
+            alt="Restauration automobile"
+          >
+
+          <div class="project-info">
+
+            <span>
+              RESTAURATION
+            </span>
+
+            <strong>
+              Finition automobile
+            </strong>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       AVIS
+  ====================================================== -->
+
+  <section class="reviews-section">
+
+    <div class="container">
+
+      <div class="section-kicker">
+        Avis clients
+      </div>
+
+
+      <div class="reviews-grid">
+
+
+        <div class="reviews-score">
+
+          <strong>
+            4,9
+          </strong>
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <span>
+            97 avis Google
+          </span>
+
+        </div>
+
+
+        <div class="review-main">
+
+          <blockquote>
+
+            « Un travail impeccable et un accueil
+            très professionnel. »
+
+          </blockquote>
+
+
+          <div class="review-author">
+            CLIENT GOOGLE
+          </div>
+
+
+          <br>
+
+
+          <a
+            href="avis.html"
+            class="text-link"
+          >
+
+            Lire tous les avis
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       CTA
+  ====================================================== -->
+
+  <section class="contact-section">
+
+    <div class="container">
+
+      <div class="contact-cta">
+
+
+        <div class="cta-background">
+
+          <img
+            src="images/atelier.jpg"
+            alt=""
+          >
+
+        </div>
+
+
+        <div class="cta-overlay"></div>
+
+
+        <div class="cta-content">
+
+          <div class="section-kicker">
+            Contact
+          </div>
+
+
+          <h2>
+
+            Votre véhicule mérite
+            <br>
+
+            <span>le meilleur.</span>
+
+          </h2>
+
+
+          <p>
+
+            Besoin d'un devis ou simplement d'un conseil ?
+            Parlons de votre véhicule.
+
+          </p>
+
+
+          <div class="cta-buttons">
+
+            <a
+              href="contact.html"
+              class="btn btn-primary"
+            >
+              Demander un devis
+            </a>
+
+
+            <a
+              href="tel:0563479603"
+              class="btn btn-white"
+            >
+              05 63 47 96 03
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          <div class="footer-logo">
+            RAYSSIGUIER
+          </div>
+
+          <p>
+
+            Carrosserie Rayssiguier Five Star.
+            Votre spécialiste carrosserie, peinture
+            automobile et restauration de jantes à Albi.
+
+            <br><br>
+
+            8 Chemin de Ranteil
+            <br>
+            81000 Albi
+
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Navigation
+          </h4>
+
+          <a href="index.html">
+            Accueil
+          </a>
+
+          <a href="services.html">
+            Services
+          </a>
+
+          <a href="realisations.html">
+            Réalisations
+          </a>
+
+          <a href="avis.html">
+            Avis
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Contact
+          </h4>
+
+          <a href="tel:0563479603">
+            05 63 47 96 03
+          </a>
+
+          <p>
+            Lundi — Vendredi
+            <br>
+            08:00 — 12:00
+            <br>
+            14:00 — 18:00
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Prestations
+          </h4>
+
+          <p>
+            Carrosserie
+            <br>
+            Peinture automobile
+            <br>
+            Restauration de jantes
+            <br>
+            Expertise
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 Carrosserie Rayssiguier Five Star
+        </span>
+
+        <span>
+          ALBI · TARN
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       MOBILE MENU
+  ====================================================== -->
+
+  <script>
+
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.primary-nav');
+
+    toggle.addEventListener('click', () => {
+
+      const isOpen = nav.classList.toggle('open');
+
+      toggle.setAttribute(
+        'aria-expanded',
+        isOpen
+      );
+
+    });
+
+
+    document.querySelectorAll('.primary-nav a').forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        nav.classList.remove('open');
+
+        toggle.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+      });
+
+    });
+
+  </script>
+
+
 </body>
+
 </html>
