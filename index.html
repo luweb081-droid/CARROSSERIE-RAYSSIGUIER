@@ -315,51 +315,137 @@
 
     .hero {
       position: relative;
-
       height: 680px;
-
       overflow: hidden;
-
       color: white;
-
       display: flex;
       align-items: center;
+      background:
+        radial-gradient(circle at 78% 50%, rgba(105,197,139,.09), transparent 34%),
+        #080b0a;
+      isolation: isolate;
     }
 
-    .hero-background {
+    /* =========================
+       HERO 3D
+       ========================= */
+
+    .hero-3d {
       position: absolute;
       inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 78% 54%, rgba(105,197,139,.10), transparent 25%),
+        linear-gradient(115deg, #080b0a 0%, #0c110e 52%, #080b0a 100%);
     }
 
-    .hero-background img {
+    #carCanvas {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-
-      object-fit: cover;
-
-      object-position: center;
+      display: block;
+      z-index: 3;
     }
 
-    /* voile comme sur la capture */
+    .hero-grid {
+      position: absolute;
+      z-index: 1;
+      right: -7%;
+      bottom: -22%;
+      width: 72%;
+      height: 78%;
+      opacity: .17;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 54px 54px;
+      transform: perspective(700px) rotateX(58deg);
+      transform-origin: center bottom;
+      mask-image: linear-gradient(
+        to left,
+        rgba(0,0,0,1),
+        rgba(0,0,0,.55),
+        transparent
+      );
+    }
+
+    .hero-glow {
+      position: absolute;
+      z-index: 2;
+      width: 620px;
+      height: 620px;
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(105,197,139,.15) 0%,
+        rgba(105,197,139,.06) 30%,
+        transparent 70%
+      );
+      filter: blur(22px);
+    }
+
+    .car-hud {
+      position: absolute;
+      z-index: 5;
+      color: rgba(255,255,255,.62);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hud-top {
+      right: 8%;
+      top: 33%;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .hud-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(105,197,139,.8);
+    }
+
+    .hud-bottom {
+      right: 9%;
+      bottom: 17%;
+      display: flex;
+      gap: 20px;
+    }
+
+    .hud-bottom span + span {
+      padding-left: 20px;
+      border-left: 1px solid rgba(255,255,255,.16);
+    }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-
+      z-index: 2;
+      pointer-events: none;
       background:
-        linear-gradient(
-          90deg,
-          rgba(10,15,13,.70) 0%,
-          rgba(10,15,13,.46) 42%,
-          rgba(10,15,13,.16) 75%,
-          rgba(10,15,13,.22) 100%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.30),
-          transparent 35%,
-          rgba(0,0,0,.18)
-        );
+        linear-gradient(90deg,
+          rgba(39,47,49,.78) 0%,
+          rgba(48,56,58,.66) 20%,
+          rgba(55,63,65,.38) 40%,
+          rgba(55,63,65,.08) 62%,
+          transparent 78%),
+        linear-gradient(180deg,
+          rgba(25,31,32,.16) 0%,
+          transparent 28%,
+          rgba(25,31,32,.08) 100%);
     }
 
     .hero-content {
@@ -469,7 +555,122 @@
     }
 
 
-    /* =========================================================
+    
+/* =========================================================
+   HERO — CSS/SVG CAR — ZERO DEPENDENCY
+========================================================= */
+.hero-visual{position:absolute;inset:0;z-index:1;overflow:hidden;background:
+  radial-gradient(circle at 23% 48%,rgba(116,124,125,.34),transparent 34%),
+  radial-gradient(circle at 72% 52%,rgba(105,197,139,.10),transparent 28%),
+  linear-gradient(115deg,#252c2e 0%,#343b3d 40%,#202628 72%,#0c100f 100%);
+}
+.hero-grid{position:absolute;right:-5%;bottom:-25%;width:68%;height:78%;opacity:.14;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:54px 54px;transform:perspective(700px) rotateX(58deg);mask-image:linear-gradient(to left,#000,rgba(0,0,0,.5),transparent);}
+.hero-glow{position:absolute;width:520px;height:520px;right:8%;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(105,197,139,.055),transparent 68%);filter:blur(8px);}
+ .image-car-wrap{
+  position:absolute;
+  width:min(860px,66vw);
+  right:0;
+  top:50%;
+  transform:translateY(-47%);
+  filter:none;
+}
+
+.hero-image-glow{
+  position:absolute;
+  width:72%;
+  height:72%;
+  right:7%;
+  top:14%;
+  background:radial-gradient(ellipse,rgba(105,197,139,.045),transparent 70%);
+  filter:blur(12px);
+  z-index:-2;
+  pointer-events:none;
+}
+
+.hero-car-image{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  border-radius:0;
+  box-shadow:none;
+  -webkit-mask-image:linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,0,0,.35) 4%,
+    #000 12%,
+    #000 94%,
+    rgba(0,0,0,.75) 98%,
+    transparent 100%);
+  mask-image:linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,0,0,.35) 4%,
+    #000 12%,
+    #000 94%,
+    rgba(0,0,0,.75) 98%,
+    transparent 100%);
+}
+
+.image-car-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(8,11,10,.52) 0%,rgba(8,11,10,.06) 18%,transparent 45%,transparent 82%,rgba(8,11,10,.18) 100%),
+    linear-gradient(180deg,rgba(8,11,10,.12) 0%,transparent 18%,transparent 80%,rgba(8,11,10,.30) 100%);
+  pointer-events:none;
+  border-radius:30px;
+}
+
+.hero-image-secondary{
+  position:absolute;
+  z-index:4;
+  width:230px;
+  height:365px;
+  right:-18px;
+  bottom:-70px;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.48),
+    0 0 0 1px rgba(105,197,139,.08);
+  transform:rotate(3deg);
+  background:#101312;
+}
+
+.hero-image-secondary::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,11,10,.05),transparent 45%,rgba(8,11,10,.58)),
+    linear-gradient(90deg,rgba(8,11,10,.28),transparent 30%,transparent 72%,rgba(8,11,10,.18));
+}
+
+.hero-image-secondary img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+
+.image-accent-line{
+  position:absolute;
+  z-index:3;
+  left:22px;
+  bottom:18px;
+  width:54px;
+  height:3px;
+  border-radius:999px;
+  background:var(--green);
+  box-shadow:0 0 18px rgba(105,197,139,.65);
+}
+
+@media(max-width:800px){.image-car-wrap{width:850px;max-width:none;right:-370px;top:61%;opacity:.72}.hero-glow{right:-260px;top:62%}.hero-grid{width:120%;right:-35%}.car-label-top{right:5%;top:25%}.car-label-bottom{display:none}.hero-overlay{background:linear-gradient(180deg,rgba(18,23,24,.76) 0%,rgba(32,38,40,.68) 38%,rgba(28,34,35,.30) 72%,rgba(7,10,11,.58) 100%),radial-gradient(ellipse at 50% 45%,rgba(105,197,139,.08),transparent 55%)}.hero-image-secondary{display:none}}
+/* =========================================================
        SERVICES
     ========================================================= */
 
@@ -1605,6 +1806,48 @@
     }
 
 
+    @media (max-width: 800px) {
+      .hero-3d {
+        opacity: .95;
+      }
+
+      .hero-grid {
+        right: -35%;
+        width: 115%;
+        opacity: .10;
+      }
+
+      .hero-glow {
+        width: 480px;
+        height: 480px;
+        right: -25%;
+      }
+
+      .hud-top {
+        right: 7%;
+        top: 25%;
+        font-size: 8px;
+      }
+
+      .hud-bottom {
+        right: 7%;
+        bottom: 10%;
+        font-size: 7px;
+      }
+
+      .hero-overlay {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(8,11,10,.92) 0%,
+            rgba(8,11,10,.80) 38%,
+            rgba(8,11,10,.28) 72%,
+            rgba(8,11,10,.72) 100%
+          );
+      }
+    }
+
+
     @media (max-width: 500px) {
 
       .top-bar-inner {
@@ -1809,69 +2052,33 @@
   ====================================================== -->
 
   <section class="hero">
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="car-label car-label-top"><i></i> RAYSSIGUIER // FIVE STAR</div>
+    <div class="car-label car-label-bottom"><span>BODY REPAIR</span><b></b><span>PRECISION FINISH</span></div>
 
+    <!-- Image intégrée directement dans le HTML : aucun fichier image externe nécessaire. -->
+    <div class="image-car-wrap">
+      <div class="hero-image-glow"></div>
 
-    <div class="hero-background">
-
-      <img
-        src="images/atelier.jpg"
-        alt="Atelier de carrosserie Rayssiguier à Albi"
-      >
-
+      <img class="hero-car-image" src="./images/voiture.jpg">
+      
     </div>
-
-
-    <div class="hero-overlay"></div>
-
-
-    <div class="hero-content">
-
-      <span class="hero-kicker">
-        Carrosserie Rayssiguier Five Star
-      </span>
-
-
-      <h1>
-
-        Votre véhicule,
-        <br>
-
-        <span>notre savoir-faire.</span>
-
-      </h1>
-
-
-      <p class="hero-description">
-
-        Carrosserie, peinture automobile et restauration de jantes
-        à Albi. Nous redonnons à votre véhicule son aspect d'origine
-        avec précision et exigence.
-
-      </p>
-
-
-      <div class="hero-buttons">
-
-        <a
-          href="contact.html"
-          class="btn btn-primary"
-        >
-          Demander un devis
-        </a>
-
-
-        <a
-          href="realisations.html"
-          class="btn btn-white"
-        >
-          Voir nos réalisations
-        </a>
-
-      </div>
-
     </div>
+  </div>
 
-  </section>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-kicker">Carrosserie Rayssiguier Five Star</span>
+    <h1>Votre véhicule,<br><span>notre savoir-faire.</span></h1>
+    <p class="hero-description">Carrosserie, peinture automobile et restauration de jantes à Albi. Nous redonnons à votre véhicule son aspect d'origine avec précision et exigence.</p>
+    <div class="hero-buttons">
+      <a href="contact.html" class="btn btn-primary">Demander un devis</a>
+      <a href="realisations.html" class="btn btn-white">Voir nos réalisations</a>
+    </div>
+  </div>
+</section>
 
 
 
@@ -2716,6 +2923,298 @@
 
   </script>
 
+  
+  <script>
+
+    const canvas = document.getElementById('carCanvas');
+    if (!canvas) throw new Error('Canvas 3D introuvable.');
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x101312, 0.045);
+
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+    camera.position.set(6.6, 2.25, 9.2);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
+    // ---------- LUMIÈRES ----------
+    scene.add(new THREE.HemisphereLight(0xdfffea, 0x080b0a, 2.0));
+
+    const key = new THREE.DirectionalLight(0xffffff, 5.0);
+    key.position.set(-4, 7, 6);
+    scene.add(key);
+
+    const green = new THREE.PointLight(0x69c58b, 18, 12, 2);
+    green.position.set(3, 1.5, 2);
+    scene.add(green);
+
+    const rim = new THREE.PointLight(0xb8ffd1, 12, 10, 2);
+    rim.position.set(-5, 3, -4);
+    scene.add(rim);
+
+    // ---------- MATÉRIAUX ----------
+    const bodyMat = new THREE.MeshPhysicalMaterial({
+      color: 0x171b19,
+      metalness: 0.92,
+      roughness: 0.2,
+      clearcoat: 1,
+      clearcoatRoughness: 0.08
+    });
+    const blackMat = new THREE.MeshStandardMaterial({
+      color: 0x050706,
+      metalness: 0.65,
+      roughness: 0.25
+    });
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0x08100c,
+      metalness: 0.1,
+      roughness: 0.08,
+      transmission: 0.18,
+      transparent: true,
+      opacity: 0.82
+    });
+    const greenMat = new THREE.MeshStandardMaterial({
+      color: 0x69c58b,
+      emissive: 0x69c58b,
+      emissiveIntensity: 3.5,
+      metalness: 0.25,
+      roughness: 0.2
+    });
+    const tyreMat = new THREE.MeshStandardMaterial({
+      color: 0x020303,
+      roughness: 0.78,
+      metalness: 0.05
+    });
+    const rimMat = new THREE.MeshStandardMaterial({
+      color: 0x87918c,
+      roughness: 0.2,
+      metalness: 0.95
+    });
+
+    const carGroup = new THREE.Group();
+    carGroup.position.set(1.15, -0.35, 0);
+    carGroup.rotation.y = -0.34;
+    scene.add(carGroup);
+
+    // ---------- HELPERS ----------
+    function addBox(parent, size, pos, mat, radius=0.18) {
+      const geo = new THREE.BoxGeometry(size.x, size.y, size.z, 5, 3, 5);
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(pos.x, pos.y, pos.z);
+      parent.add(mesh);
+      return mesh;
+    }
+
+    function addSphere(parent, scale, pos, mat, seg=48) {
+      const geo = new THREE.SphereGeometry(1, seg, Math.max(24, seg/2));
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.scale.set(scale.x, scale.y, scale.z);
+      mesh.position.set(pos.x, pos.y, pos.z);
+      parent.add(mesh);
+      return mesh;
+    }
+
+    // ---------- CARROSSERIE ----------
+    const lower = addSphere(carGroup, {x: 3.75, y: 0.7, z: 1.52}, {x: 0, y: 1.18, z: 0}, bodyMat);
+    lower.scale.y = 0.68;
+
+    // capot long et bas
+    const hood = addBox(carGroup, {x: 3.15, y: 0.38, z: 1.42}, {x: 0.78, y: 1.43, z: 0}, bodyMat);
+    hood.rotation.z = -0.015;
+
+    // arrière légèrement bombé
+    addSphere(carGroup, {x: 1.65, y: 0.62, z: 1.45}, {x: -1.45, y: 1.34, z: 0}, bodyMat);
+
+    // toit/cabine
+    const cabin = new THREE.Group();
+    cabin.position.set(-0.32, 1.88, 0);
+    cabin.rotation.z = -0.055;
+    carGroup.add(cabin);
+
+    addSphere(cabin, {x: 1.72, y: 0.73, z: 1.18}, {x: 0, y: 0, z: 0}, bodyMat);
+    const glass = addSphere(cabin, {x: 1.42, y: 0.53, z: 1.06}, {x: 0.04, y: 0.08, z: 0}, glassMat);
+    glass.scale.y = 0.94;
+
+    // bandeau de caisse / bas de caisse
+    addBox(carGroup, {x: 3.65, y: 0.22, z: 1.56}, {x: 0, y: 0.82, z: 0}, blackMat);
+
+    // diffuseur arrière
+    addBox(carGroup, {x: 0.72, y: 0.23, z: 1.34}, {x: -1.88, y: 0.98, z: 0}, blackMat);
+
+    // lame avant
+    addBox(carGroup, {x: 0.48, y: 0.14, z: 1.46}, {x: 1.98, y: 0.98, z: 0}, blackMat);
+
+    // ---------- ROUES ----------
+    function wheel(x, z) {
+      const group = new THREE.Group();
+      group.position.set(x, 0.77, z);
+      group.rotation.x = Math.PI / 2;
+      carGroup.add(group);
+
+      const tyre = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.61, 0.61, 0.34, 48),
+        tyreMat
+      );
+      group.add(tyre);
+
+      const rim = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.39, 0.39, 0.365, 32),
+        rimMat
+      );
+      group.add(rim);
+
+      const hub = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.10, 0.10, 0.39, 20),
+        blackMat
+      );
+      group.add(hub);
+
+      for (let i=0; i<5; i++) {
+        const spoke = new THREE.Mesh(
+          new THREE.BoxGeometry(0.055, 0.34, 0.055),
+          blackMat
+        );
+        spoke.rotation.z = i * (Math.PI * 2 / 5);
+        group.add(spoke);
+      }
+    }
+
+    wheel(1.18, 1.48);
+    wheel(1.18, -1.48);
+    wheel(-1.35, 1.48);
+    wheel(-1.35, -1.48);
+
+    // ailes pour masquer la partie supérieure des roues
+    for (const x of [1.18, -1.35]) {
+      for (const z of [1.48, -1.48]) {
+        const arch = new THREE.Mesh(
+          new THREE.TorusGeometry(0.68, 0.13, 12, 36, Math.PI),
+          bodyMat
+        );
+        arch.rotation.x = Math.PI / 2;
+        arch.position.set(x, 1.05, z);
+        carGroup.add(arch);
+      }
+    }
+
+    // ---------- SIGNATURE VERTE ----------
+    function lightBar(x, y, z, sx, sz) {
+      const m = new THREE.Mesh(
+        new THREE.BoxGeometry(sx, 0.055, sz),
+        greenMat
+      );
+      m.position.set(x,y,z);
+      carGroup.add(m);
+    }
+
+    lightBar(2.04, 1.34, 0.0, 0.055, 0.92);
+    lightBar(-1.91, 1.25, 0.0, 0.05, 0.86);
+
+    // phares
+    const headlightMat = new THREE.MeshPhysicalMaterial({
+      color: 0xeafff1,
+      emissive: 0x69c58b,
+      emissiveIntensity: 5,
+      transmission: 0.15,
+      roughness: 0.12
+    });
+    for (const z of [-0.62, 0.62]) {
+      const h = new THREE.Mesh(
+        new THREE.SphereGeometry(0.17, 24, 12),
+        headlightMat
+      );
+      h.scale.set(0.18, 0.75, 1);
+      h.position.set(2.05, 1.43, z);
+      carGroup.add(h);
+    }
+
+    // rétroviseurs
+    for (const z of [-1.25, 1.25]) {
+      const mirror = addSphere(carGroup, {x:0.22, y:0.13, z:0.14}, {x:0.55,y:1.83,z}, blackMat, 24);
+      mirror.rotation.y = z > 0 ? -0.3 : 0.3;
+    }
+
+    // aileron discret
+    addBox(carGroup, {x:0.14, y:0.48, z:1.28}, {x:-1.7, y:1.75, z:0}, blackMat);
+    addBox(carGroup, {x:0.58, y:0.08, z:1.58}, {x:-1.75, y:2.0, z:0}, blackMat);
+
+    // ---------- SOL / HALO ----------
+    const floor = new THREE.Mesh(
+      new THREE.CircleGeometry(4.5, 64),
+      new THREE.MeshBasicMaterial({color:0x69c58b, transparent:true, opacity:0.045})
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.set(0, 0.02, 0);
+    scene.add(floor);
+
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(2.5, 2.55, 96),
+      new THREE.MeshBasicMaterial({color:0x69c58b, transparent:true, opacity:0.16, side:THREE.DoubleSide})
+    );
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.y = 0.035;
+    scene.add(ring);
+
+    // ---------- PARALLAX ----------
+    const mouse = {x:0, y:0};
+    const targetMouse = {x:0, y:0};
+
+    window.addEventListener('mousemove', e => {
+      targetMouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetMouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, {passive:true});
+
+    let t = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      t += 0.008;
+
+      mouse.x += (targetMouse.x - mouse.x) * 0.045;
+      mouse.y += (targetMouse.y - mouse.y) * 0.045;
+
+      carGroup.rotation.y += ((-0.34 + mouse.x * 0.11) - carGroup.rotation.y) * 0.035;
+      carGroup.rotation.x += ((mouse.y * 0.025) - carGroup.rotation.x) * 0.035;
+      carGroup.position.y = -0.35 + Math.sin(t) * 0.035;
+
+      green.position.x = 3 + mouse.x * 1.5;
+      green.position.z = 2 + mouse.y * 1.2;
+
+      ring.rotation.z = t * 0.08;
+      renderer.render(scene, camera);
+    }
+
+    function resize() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+
+      if (w <= 800) {
+        camera.position.set(5.3, 1.65, 10.8);
+        carGroup.position.x = 1.0;
+        carGroup.scale.setScalar(0.82);
+      } else {
+        camera.position.set(6.6, 2.25, 9.2);
+        carGroup.position.x = 1.15;
+        carGroup.scale.setScalar(1);
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+  </script>
 
 </body>
 
